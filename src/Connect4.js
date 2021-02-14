@@ -18,8 +18,8 @@ const Connect4 = props => {
     const [winner, setWinner] = useState(null);
 
     const updateBoard = column => {
-        // get the array of the column player clicked and find the first empty slot to simulate a drop
-        const index = board[column].indexOf(null);
+        // get the array of the column player clicked and find the last empty slot to simulate a drop
+        const index = board[column].lastIndexOf(null);
 
         if (index >= 0) {
             const newColumnArray = [...board[column]];
