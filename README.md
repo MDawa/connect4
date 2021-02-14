@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Connect 4 for InKind programming challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To save on video time, I did all my brainstorming on paper before I did any programming.
 
-## Available Scripts
+during the interview I mentioned that the reactjs tutorial has a tic tac toe game example but I found out that I can't really use their solution to figure out a winner.
 
-In the project directory, you can run:
+My first crack at an algorithm was by doing it using math where each square would be a range of numbers from 0 to 41 and do a series of divides and modulo to figure out a patter, but it didn't work out.
 
-### `yarn start`
+My second try was to represent the game board as an array of arrays.  The outer array would be the columns and the inner array would be rows.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The game board consist of a 7 X 6 grid.  The winner takes 4 in a row either up/down, across, or diagonal
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I needed to figure out what kind of states do I need
+- Current state of the player's turn
+- Current state of the board
+- And state of the winner (to prevent over playing)
 
-### `yarn test`
+I drew out the simple work flow
+- Initialize board
+- initialize states
+- Click on a square/column
+  - Check if column is full, otherwise player retries somewhere else
+- Update state of the board
+- Check if there is a winner
+  - Check if there is a win up/down
+  - If not, then check across
+  - If not, then check diagonal
+- If there are no winners, toggle current player's turn and repeat
+- If there is a winner, display winner and stop
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The pseudo code for declaring a winner
+- For up/down
+  - in each column, check for 4 consecutive same value
+- For across
+  - in each column, find the row that has a 'hit', then increment column value for the same row value until 4 consecutive same value
+- For diagonal up
+  - in each column, find the row that has a 'hit', then increment column value and increment row value until 4 consecutive same value
+- For diagonal down
+  - in each column, find the row that has a 'hit', then increment column value and decrement row value until 4 consecutive same value

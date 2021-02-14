@@ -1,4 +1,2 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
-
-
+import Connect4 from './Connect4';
