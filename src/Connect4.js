@@ -5,19 +5,19 @@ import { PLAYER, COLUMNS, ROW } from "./constants";
 import checkWinner from "./checkWinner";
 
 
-const initBoard = () => {
+function initBoard() {
     // Create the 7 X 6 board, having null values = empty
     // TODO: board is upside down
     return Array(COLUMNS).fill(Array(ROW).fill(null));
 }
 
 
-const Connect4 = props => {
+function Connect4(props) {
     const [turn, setTurn] = useState(0);
     const [board, setBoard] = useState(initBoard());
     const [winner, setWinner] = useState(null);
 
-    const updateBoard = column => {
+    function updateBoard(column) => {
         // get the array of the column player clicked and find the last empty slot to simulate a drop
         const index = board[column].lastIndexOf(null);
 
@@ -37,7 +37,7 @@ const Connect4 = props => {
         }
     }
 
-    const handleClick = column => {
+    function handleClick(column) => {
         // Short circuit click if game is over
         if (winner === null)
             updateBoard(column);
