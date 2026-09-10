@@ -30,7 +30,7 @@ The pseudo code for declaring a winner
 - For diagonal down
   - in each column, find the row that has a 'hit', then increment column value and decrement row value until 4 consecutive same value
  
-To start the game:
+To start the game: (this is wrong)
 ```javascript
-node
+node ./Connect4.js
 ```
