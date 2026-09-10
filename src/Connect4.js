@@ -21,7 +21,8 @@ function Connect4(props) {
         // get the array of the column player clicked and find the last empty slot to simulate a drop
         const index = board[column].lastIndexOf(null);
 
-        if (index >= 0) {
+        // TODO: Intentional index check
+        // if (index >= 0) {
             const newColumnArray = [...board[column]];
             newColumnArray.splice(index, 1, PLAYER[turn].icon);
             const newBoard = [...board.slice(0, column), newColumnArray, ...board.slice(column + 1)];
@@ -34,7 +35,7 @@ function Connect4(props) {
                 setTurn(prev => prev === 0 ? 1 : 0);
 
 
-        }
+        // }
     }
 
     function handleClick(column) => {
