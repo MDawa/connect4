@@ -32,5 +32,5 @@ The pseudo code for declaring a winner
  
 To start the game: (this is wrong)
 ```javascript
-node ./Connect4.js
+node Connect4.js
 ```
